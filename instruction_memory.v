@@ -9,10 +9,10 @@ module instruction_memory(address, data);
 	begin
 		$readmemh("program.hex", instruction_memory,0,31);
     end
-	
+
     assign data = instruction_memory[address[31:0]];
-	
-	always @ (address)
+
+	always @(address)
 	begin
 		$display("Instruction Memory");
 		$display("Address: %h", address[31:0]);
