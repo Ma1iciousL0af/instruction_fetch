@@ -1,30 +1,21 @@
-module instruction_memory(
-                    address,
-                    data
-  );
-  input [31:0] address;
-  output [31:0] data;
-  //reg [31:0] data;
-  integer i;
-  reg [31:0] instruction_memory[255:0];
+`timescale 1 ns / 1 ps
 
-  initial
-    // begin
-    // wire data_file;
-    // data_file = $fopen("mips.dat");
-    // if (data_file == NULL) begin
-    //   $display("ERROR: data file not found");
-    //   $finish;
-    // end
-    // scan_file = $fscanf(data_file, "%d\n",captured_data);
-    // if (!feof(data_file)) begin
-    //   generate
-    //     genvar i;
-    //     for (i=0; i<256; i++) begin
-    begin
-    $readmemh("program.hex", instruction_memory,255,0);
-    for (i=0;i<40; i= i+1)
-      $display("%d:%h",i,instruction_memory[i]);
+module instruction_memory(address, data);
+	input [31:0] address;
+	output [31:0] data;
+	reg [31:0] instruction_memory[31:0];
+
+	initial
+	begin
+		$readmemh("program.hex", instruction_memory,0,31);
     end
-    assign data = instruction_memory[address[9:2]];
-  endmodule
+	
+    assign data = instruction_memory[address[31:0]];
+	
+	always @ (address)
+	begin
+		$display("Instruction Memory");
+		$display("Address: %h", address[31:0]);
+		$display("Data: %h", data[31:0]);
+	end
+ endmodule
