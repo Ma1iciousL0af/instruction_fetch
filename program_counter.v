@@ -7,7 +7,7 @@ module program_counter (clk, rst, npc, pc_result);
 	output [31:0] pc_result;
 	reg [31:0] pc_result;
 
-	initial 
+	initial
 	begin
 		pc_result = 0;
 		$display("\nProgram Counter");
