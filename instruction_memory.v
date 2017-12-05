@@ -10,7 +10,7 @@ module instruction_memory(address, data);
 		$readmemh("program.hex", instruction_memory,0,31);
     end
 
-    assign data = instruction_memory[address[31:0]];
+    assign data = instruction_memory[address[39:0]];
 
 	always @(address)
 	begin
