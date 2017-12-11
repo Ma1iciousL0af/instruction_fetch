@@ -20,7 +20,7 @@ module IF_TEST;
     rst = 0;
       #1  rst = 1;
      // #5  rst = 0;
-     #31  $stop(1);
+     #52  $stop(1);
   end
 
   always

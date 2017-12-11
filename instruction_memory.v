@@ -3,11 +3,11 @@
 module instruction_memory(address, data);
 	input [31:0] address;
 	output [31:0] data;
-	reg [31:0] instruction_memory[31:0];
+	reg [31:0] instruction_memory[39:0];
 
 	initial
 	begin
-		$readmemh("program.hex", instruction_memory,0,31);
+		$readmemh("program.hex", instruction_memory,0,39);
     end
 
     assign data = instruction_memory[address[39:0]];
